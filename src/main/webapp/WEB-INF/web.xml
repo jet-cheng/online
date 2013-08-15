@@ -1,22 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app version="2.5" 
-	xmlns="http://java.sun.com/xml/ns/javaee" 
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+<web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
 	http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+	<listener>
+		<listener-class>org.b3log.latke.servlet.DefaultServletListener</listener-class>
+	</listener>
+	<servlet>
+		<servlet-name>HTTPRequestDispatcher</servlet-name>
+		<servlet-class>org.b3log.latke.servlet.HTTPRequestDispatcher</servlet-class>
+		<load-on-startup>2</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>HTTPRequestDispatcher</servlet-name>
+		<url-pattern>/*</url-pattern>
+	</servlet-mapping>
 
 
 
- <servlet>
-    <servlet-name>hello</servlet-name>
-    <servlet-class>com.baidu.maven.demo.HelloServlet</servlet-class>
-</servlet>
-<servlet-mapping>
-    <servlet-name>hello</servlet-name>
-    <url-pattern>/hello</url-pattern>
-</servlet-mapping>
-
-  <welcome-file-list>
-    <welcome-file>index.jsp</welcome-file>
-  </welcome-file-list>
+	<welcome-file-list>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
 </web-app>
