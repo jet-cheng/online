@@ -1,0 +1,25 @@
+[
+	{
+		"name": "虎嗅网大数据专题",
+		"baseUrl":"http://www.huxiu.com",
+		"url": "http://www.huxiu.com/tags/374.html",
+		"list": "div[class~=tags-nr-box] div[class~=tags-nr-dl] dl>dd",
+		"hrefOfList":"h3>a",
+		"abstractOfList":"p",
+		"nextPage": "div[class~=tags-nr-box] div[class~=pages] span[class=next]>a",
+		"endOfDate": "2012-07-16 14:27",
+		"article": {
+			"title": "div[class~=neirong]>h1",
+			"author": "div[class~=neirong] div[class~=neirong-other] span[class~=recommenders]>a",
+			"date": "div[class~=neirong] div[class~=neirong-other] time",
+			"tags": "div[class~=neirong] div[class~=neirong-other] span[class=tags]>a",
+			"image": "div[class~=neirong] div[class~=neirong-box] span[class~=span-img]>img",
+			"content": "div[class~=neirong] div[class~=neirong-box]",
+			"pages": ""
+		},
+		"runnable":"com.wini.online.scheduler.SchedulerRunnable",
+		"initialDelay":"0",
+		"delay":"10",
+		"articleSign":"1"
+	}
+]
