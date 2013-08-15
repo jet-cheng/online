@@ -12,6 +12,7 @@ import org.b3log.latke.ioc.Lifecycle;
 import org.b3log.latke.servlet.AbstractServletListener;
 
 import com.wini.online.service.IInitService;
+import com.wini.online.service.impl.InitServiceImpl;
 
 
 public class WinionlineListener extends AbstractServletListener {
@@ -24,8 +25,9 @@ public class WinionlineListener extends AbstractServletListener {
 	public void contextInitialized(ServletContextEvent servletContextEvent) {
 		super.contextInitialized(servletContextEvent);
 		beanManager = Lifecycle.getBeanManager();
+		
 		try {
-			IInitService initService = (IInitService) beanManager.getReference(IInitService.class);
+			IInitService initService = (IInitService) beanManager.getReference(InitServiceImpl.class);
 			initService.initWinionlie();
 		} catch (Exception e) {
 			LOGGER.log(Level.SEVERE,"初始化wininonline用户失败",e);
