@@ -34,21 +34,4 @@ public class Constant {
 	
 	
 	public static final String WINI_ONLINE_ARTICLE_ABSTRACT = "wini.online.article.abstract";
-
-	public static void main(String[] args) {
-		
-		try {
-			String content = FetchUtil.get("http://www.huxiu.com/tags/374/3.html");
-			Document doc = Jsoup.parse(content);
-			Elements dd = doc.select("div[class~=tags-nr-box] div[class~=tags-nr-dl] dl>dd");
-			for(Element d : dd){
-				Element abstractP = d.select("p").get(1);
-				abstractP.select("a").remove();
-				System.out.println(abstractP);
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-
 }

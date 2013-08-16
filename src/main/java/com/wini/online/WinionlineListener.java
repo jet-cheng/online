@@ -25,7 +25,6 @@ public class WinionlineListener extends AbstractServletListener {
 	public void contextInitialized(ServletContextEvent servletContextEvent) {
 		super.contextInitialized(servletContextEvent);
 		beanManager = Lifecycle.getBeanManager();
-		
 		try {
 			IInitService initService = (IInitService) beanManager.getReference(InitServiceImpl.class);
 			initService.initWinionlie();
