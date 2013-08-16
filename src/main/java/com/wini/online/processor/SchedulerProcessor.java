@@ -21,7 +21,7 @@ public class SchedulerProcessor {
 
 	private LatkeBeanManager beanManager;
 	
-	@RequestProcessing(value = "/crawl.do", method = HTTPRequestMethod.GET)
+	@RequestProcessing(value = "/crawl", method = HTTPRequestMethod.GET)
 	public void crawlProcessor(final HttpServletRequest request, final HttpServletResponse response) throws Exception {
 		beanManager = Lifecycle.getBeanManager();
 		JSONArray sites = CrawlUtil.getJsonArray();
