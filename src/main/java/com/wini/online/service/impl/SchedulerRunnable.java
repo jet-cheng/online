@@ -17,6 +17,7 @@ import com.wini.online.constant.Crawl;
 import com.wini.online.model.ArticleExt;
 import com.wini.online.service.ICrawlService;
 import com.wini.online.service.ISchedulerRunnable;
+import com.wini.online.util.DateUtil;
 import com.wini.online.util.FetchUtil;
 
 public class SchedulerRunnable implements Runnable, ISchedulerRunnable {
@@ -38,6 +39,7 @@ private static final Logger LOGGER = Logger.getLogger(SchedulerRunnable.class.ge
 		try{
 			String url = aCrawlJson.getString(Crawl.CRAWL_URL);
 			String endOfDate = mc.get(aCrawlJson.getString(Crawl.CRAWL_BASEURL)) == null ? aCrawlJson.getString(Crawl.CRAWL_ENDOFDATE) : (String)mc.get(aCrawlJson.getString(Crawl.CRAWL_BASEURL));
+			LOGGER.log(Level.INFO,"正在抓取 " + url + " 中截止日期为" + endOfDate + "的信息");
 			crawl(url,endOfDate);
 		}catch(Exception e){
 			LOGGER.log(Level.SEVERE,e.getMessage(), e);
@@ -96,11 +98,12 @@ private static final Logger LOGGER = Logger.getLogger(SchedulerRunnable.class.ge
 		try{
 			element = doc.select(articleJson.getString(Crawl.CRAWL_ARTICLE_DATE)).get(0);
 			String date = element.text().trim();
-			if(crawlEnd.compareTo(date) > 0){
+			if(crawlEnd.compareTo(date) >= 0){
 				return article;
 			}else{
 				String newCrawlEnd =   mc.get(aCrawlJson.getString(Crawl.CRAWL_BASEURL)) == null ? crawlEnd : (String)mc.get(aCrawlJson.getString(Crawl.CRAWL_BASEURL));
 				mc.add(aCrawlJson.getString(Crawl.CRAWL_BASEURL), newCrawlEnd.compareTo(date) > 0 ? newCrawlEnd : date);
+				article.put(Article.ARTICLE_CREATE_DATE, DateUtil.str2Date(date + ":00", DateUtil.YYYY_MM_DD_HH_MM_SS));
 				article.put(ArticleExt.ARTICLE_FROM_CREATE_DATE, date);
 			}
 		}catch(Exception e){
@@ -108,7 +111,7 @@ private static final Logger LOGGER = Logger.getLogger(SchedulerRunnable.class.ge
 		}
 		try {
 			element = doc.select(articleJson.getString(Crawl.CRAWL_ARTICLE_TITLE)).get(0);
-			article.put(Article.ARTICLE_TITLE, element.text());
+			article.put(Article.ARTICLE_TITLE, element.text() + "[转]");
 		} catch (Exception e) {
 			LOGGER.log(Level.SEVERE,"获取文章标题失败["+url+"]",e);
 		}

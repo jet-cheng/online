@@ -11,7 +11,6 @@ import com.wini.online.util.FetchUtil;
 import com.wini.online.util.WiniUtil;
 
 public class Constant {
-	public static final String WINI_MODE = "wini.mode";
 
 	public static final String WINI_MONGODB_NOBAE_SERVER = "wini.mongodb.nobae.server";
 	public static final String WINI_MONGODB_NOBAE_PORT = "wini.mongodb.nobae.port";

@@ -4,6 +4,9 @@ import java.net.UnknownHostException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import org.b3log.latke.Latkes;
+import org.b3log.latke.RuntimeEnv;
+
 import com.baidu.bae.api.util.BaeEnv;
 import com.mongodb.DB;
 import com.mongodb.DBCollection;
@@ -11,7 +14,6 @@ import com.mongodb.MongoClient;
 import com.mongodb.MongoClientOptions;
 import com.mongodb.ServerAddress;
 import com.wini.online.constant.Constant;
-import com.wini.online.constant.WiniMode;
 import com.wini.online.util.WiniUtil;
 
 public class MongodbClient {
@@ -37,7 +39,7 @@ public class MongodbClient {
 	
 	private MongodbClient(){
 		try {
-			if(WiniUtil.get(Constant.WINI_MODE).equals(WiniMode.BAE.toString())){
+			if(Latkes.getRuntimeEnv().equals(RuntimeEnv.BAE)){
 				this.server = BaeEnv.getBaeHeader(BaeEnv.BAE_ENV_ADDR_MONGO_IP);
 				this.port  = BaeEnv.getBaeHeader(BaeEnv.BAE_ENV_ADDR_MONGO_PORT);
 				this.user = BaeEnv.getBaeHeader(BaeEnv.BAE_ENV_AK);

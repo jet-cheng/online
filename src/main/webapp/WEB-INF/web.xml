@@ -9,12 +9,13 @@
 	<servlet>
 		<servlet-name>HTTPRequestDispatcher</servlet-name>
 		<servlet-class>org.b3log.latke.servlet.HTTPRequestDispatcher</servlet-class>
-		<load-on-startup>2</load-on-startup>
+		<load-on-startup>1</load-on-startup>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>HTTPRequestDispatcher</servlet-name>
 		<url-pattern>*.do</url-pattern>
 	</servlet-mapping>
+	
 	<welcome-file-list>
 		<welcome-file>index.jsp</welcome-file>
 	</welcome-file-list>
