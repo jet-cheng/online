@@ -19,7 +19,7 @@ public class CrawlUtil {
 		try {
 			StringBuffer sb = new StringBuffer();
 			InputStream is = CrawlUtil.class.getClassLoader().getResourceAsStream("crawl.json");
-			BufferedReader reader = new BufferedReader(new InputStreamReader(is));
+			BufferedReader reader = new BufferedReader(new InputStreamReader(is,"utf-8"));
 			
 			String line = reader.readLine();
 			while(line != null){
