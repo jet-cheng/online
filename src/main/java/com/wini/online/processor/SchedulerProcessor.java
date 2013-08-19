@@ -1,6 +1,7 @@
 package com.wini.online.processor;
 
-import javax.servlet.http.HttpServletResponse;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import org.b3log.latke.ioc.LatkeBeanManager;
 import org.b3log.latke.ioc.Lifecycle;
@@ -18,7 +19,9 @@ import com.wini.online.util.CrawlUtil;
 
 @RequestProcessor
 public class SchedulerProcessor {
-
+	
+	private static final Logger LOGGER = Logger.getLogger(SchedulerProcessor.class.getName());
+	
 	private LatkeBeanManager beanManager;
 	
 	@RequestProcessing(value = "/crawl.wini", method = HTTPRequestMethod.GET)
@@ -29,9 +32,7 @@ public class SchedulerProcessor {
 			JSONObject site = sites.getJSONObject(i);
 			SchedulerRunnable runnable = new SchedulerRunnable(site,beanManager.getReference(MysqlServiceImpl.class));
 			runnable.run();
-			HttpServletResponse response = context.getResponse();
-			response.getWriter().write(site.getString(Crawl.CRAWL_NAME) + "的数据正在抓取..........");
-			response.getWriter().close();
+			LOGGER.log(Level.INFO,site.getString(Crawl.CRAWL_NAME) + "的数据正在抓取..........");
 		}
 	}
 	
