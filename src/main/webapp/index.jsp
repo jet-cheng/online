@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*,java.net.URL,java.lang.Thread" pageEncoding="ISO-8859-1"%>
+<%@ page language="java" import="java.util.*,java.net.URL,java.lang.Thread" pageEncoding="utf-8"%>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
@@ -24,5 +24,10 @@
 
 <body>
 	Hello world
+	<a href="/weixin.wini">签名公众平台</a>
+	<form action="/weixin.wini" method="post">
+		<button type="submit" value="验证公众平台">验证公众平台</button>
+	</form>
+	
 </body>
 </html>
