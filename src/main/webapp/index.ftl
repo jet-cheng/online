@@ -6,7 +6,7 @@
 			+ path + "/";
 %>
 
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!DOCTYPE>
 <html>
 <head>
 <base href="<%=basePath%>">
@@ -23,7 +23,7 @@
 </head>
 
 <body>
-	Hello world
+	${welcome}
 	<a href="/weixin.wini">签名公众平台</a>
 	<form action="/weixin.wini" method="post">
 		<button type="submit" value="验证公众平台">验证公众平台</button>
