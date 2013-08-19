@@ -23,11 +23,6 @@
 </head>
 
 <body>
-	<%
-		while (true) {
-			out.println(new Date());
-			Thread.sleep(10000);
-		}
-	%>
+	Hello world
 </body>
 </html>
