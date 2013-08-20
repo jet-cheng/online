@@ -1,4 +1,4 @@
 wini
 ====
 
-the base of other projects
+为维尼小弟的博客创建的爬虫系统
