@@ -58,7 +58,6 @@ private static final Logger LOGGER = Logger.getLogger(SchedulerRunnable.class.ge
 		Document doc = Jsoup.parse(content);
 		Elements articles = doc.select(aCrawlJson.getString(Crawl.CRAWL_LIST));
 		for(Element obj : articles){
-			Thread.sleep(10000);
 			String href = obj.select(aCrawlJson.getString(Crawl.CRAWL_HREFOFLIST)).attr("href");
 			String articleUrl = aCrawlJson.getString(Crawl.CRAWL_BASEURL) + href;
 			Map<String,Object> article = crawlContent(articleUrl,crawlEnd);

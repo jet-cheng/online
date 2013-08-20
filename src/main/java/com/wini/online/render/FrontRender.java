@@ -26,7 +26,6 @@ public class FrontRender extends AbstractFreeMarkerRenderer {
         } catch (final IOException e) {
             LOGGER.log(Level.SEVERE,"初始化路径模板路径失败",e);
         }
-		
 	}
 	
 
@@ -37,13 +36,11 @@ public class FrontRender extends AbstractFreeMarkerRenderer {
 
 	@Override
 	protected void beforeRender(HTTPRequestContext context) throws Exception {
-		// TODO Auto-generated method stub
 
 	}
 
 	@Override
 	protected void afterRender(HTTPRequestContext context) throws Exception {
-		// TODO Auto-generated method stub
 
 	}
 
